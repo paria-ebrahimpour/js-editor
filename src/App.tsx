@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
+import CodeEditor from "./components/code-editor";
 
 function App() {
   const ref = useRef<any>();
@@ -64,12 +65,16 @@ function App() {
       this is code js editor that you can import react, axios or ... in it and
       use and test it
       <br />
-      <textarea
+      <CodeEditor
+        initialValue="const a = 1;"
+        onChange={(value) => setInput(value)}
+      />
+      {/* <textarea
         value={input}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           setInput(e?.target?.value)
         }
-      ></textarea>
+      ></textarea> */}
       <div>
         <button onClick={onSubmit}>Submit</button>
       </div>
